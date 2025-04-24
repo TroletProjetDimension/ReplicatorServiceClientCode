@@ -60,10 +60,7 @@ jobs:
       # 8. Checkout your dedicated client repo
       - name: Checkout client repo
         uses: actions/checkout@v3
-        with:
-          repository: YOUR_ORG/YOUR_CLIENT_REPO
-          token: ${{ secrets.CLIENT_REPO_TOKEN }}
-          path: client-repo
+
 
       # 9. Sync over the newly generated code
       - name: Sync generated code
