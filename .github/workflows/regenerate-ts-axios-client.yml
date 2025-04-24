@@ -17,10 +17,12 @@ jobs:
       - name: Download OpenAPI spec
         run: |
           curl -sSL "${{ secrets.SPEC_URL }}" -o spec.yaml
+          cat spec.yaml
 
       # 2. Install OpenAPI Generator CLI
       - name: Install OpenAPI Generator CLI
         run: |
+          openapi-generator-cli validate -i spec.yaml
           npm install @openapitools/openapi-generator-cli -g
 
       # 3. Generate the TS-Axios client
