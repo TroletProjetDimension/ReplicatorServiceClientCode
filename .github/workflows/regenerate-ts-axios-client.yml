@@ -1,4 +1,3 @@
-# .github/workflows/regenerate-ts-axios-client.yml
 name: Regenerate TypeScript-Axios Client
 
 on:
@@ -7,48 +6,40 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: write  # allows reading/writing repo contents with GITHUB_TOKEN
 
 jobs:
   generate-and-push:
     runs-on: ubuntu-latest
     steps:
-
-      # 1. Checkout this workflow repo (to get this file and for any pushes back)
+      # 1. Checkout this repo (with token to push later)
       - name: Checkout origin repo
         uses: actions/checkout@v3
         with:
-          persist-credentials: true
-          fetch-depth: 0
+          persist-credentials: true  # leave GITHUB_TOKEN in git config
+          fetch-depth: 0            # full history to avoid detached HEAD
 
-      # 2. Download your live OpenAPI spec
+      # 2. Download the live OpenAPI spec
       - name: Download OpenAPI spec
         run: |
           curl -sSL "${{ secrets.SPEC_URL }}" -o spec.yaml
 
-      # 3. Upload the raw spec as an artifact (so you can inspect it un-masked)
-      - name: Upload raw spec artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: openapi-spec
-          path: spec.yaml
-
-      # 4. Patch the invalid scheme name in-place
-      - name: Rename security scheme to valid key
+      # 3. Patch the invalid scheme name (no spaces allowed) :contentReference[oaicite:2]{index=2}
+      - name: Rename security scheme for validation
         run: |
           sed -i 's/Bearer Authentication/BearerAuth/g' spec.yaml
 
-      # 5. Install OpenAPI Generator CLI
+      # 4. (Optional) Show a base64‐encoded snippet to inspect without redaction :contentReference[oaicite:3]{index=3}
+      - name: Preview spec (base64)
+        run: |
+          head -n 20 spec.yaml | base64
+
+      # 5. Install the OpenAPI Generator CLI
       - name: Install OpenAPI Generator CLI
         run: |
           npm install @openapitools/openapi-generator-cli -g
 
-      # 6. (Optional) Validate spec — will pass now that we patched the name
-      - name: Validate spec
-        run: |
-          openapi-generator-cli validate -i spec.yaml
-
-      # 7. Generate the TS-Axios client (skip validation as a fallback)
+      # 6. Generate the TypeScript-Axios client (skip validation if anything else fails) :contentReference[oaicite:4]{index=4}
       - name: Generate TS-Axios client
         run: |
           openapi-generator-cli generate \
@@ -57,20 +48,19 @@ jobs:
             -o generated-client \
             --skip-validate-spec
 
-      # 8. Checkout your dedicated client repo
+      # 7. Checkout the dedicated client repo to push into it
       - name: Checkout client repo
         uses: actions/checkout@v3
+        with:
+          repository: YOUR_ORG/YOUR_CLIENT_REPO
+          token: ${{ secrets.CLIENT_REPO_TOKEN }}
+          path: client-repo
 
-
-      # 9. Sync over the newly generated code
-      - name: Sync generated code
+      # 8. Sync over generated code and commit if changed
+      - name: Sync generated client & push
         run: |
           rm -rf client-repo/*
           cp -R generated-client/* client-repo/
-
-      # 10. Commit & push back to client repo (only if there are changes)
-      - name: Commit and push changes
-        run: |
           cd client-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
