@@ -17,6 +17,9 @@ jobs:
       - name: Download OpenAPI spec
         run: |
           curl -sSL "${{ secrets.SPEC_URL }}" -o spec.yaml
+
+      - name: Cat file
+        run: |
           cat spec.yaml
 
       # 2. Install OpenAPI Generator CLI
