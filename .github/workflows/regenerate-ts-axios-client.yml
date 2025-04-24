@@ -22,8 +22,11 @@ jobs:
       # 2. Install OpenAPI Generator CLI
       - name: Install OpenAPI Generator CLI
         run: |
-          openapi-generator-cli validate -i spec.yaml
           npm install @openapitools/openapi-generator-cli -g
+
+      - name: Validate spec file
+        run: |
+          openapi-generator-cli validate -i spec.yaml
 
       # 3. Generate the TS-Axios client
       - name: Generate TS-Axios client
