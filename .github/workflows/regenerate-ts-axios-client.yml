@@ -49,7 +49,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           ls -la
-
+          git status
           rm -rf ./generated-client/.git
           ls -la ./generated-client
           git add -A
