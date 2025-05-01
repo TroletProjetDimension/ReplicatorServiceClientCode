@@ -50,6 +50,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           ls -la
 
+          rm -rf ./generated-client/.git
           ls -la ./generated-client
           git add -A
           
