@@ -46,6 +46,12 @@ export interface ProductBuilder {
      * @type {string}
      * @memberof ProductBuilder
      */
+    'type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductBuilder
+     */
     'category'?: string;
     /**
      * 

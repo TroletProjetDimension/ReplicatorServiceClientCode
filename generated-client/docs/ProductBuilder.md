@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional] [default to undefined]
 **title** | **string** |  | [optional] [default to undefined]
+**type** | **string** |  | [optional] [default to undefined]
 **category** | **string** |  | [optional] [default to undefined]
 **handle** | **string** |  | [optional] [default to undefined]
 **tags** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
@@ -36,6 +37,7 @@ import { ProductBuilder } from './api';
 const instance: ProductBuilder = {
     id,
     title,
+    type,
     category,
     handle,
     tags,

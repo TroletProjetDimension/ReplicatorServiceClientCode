@@ -117,6 +117,8 @@ components:
           type: string
         title:
           type: string
+        type:
+          type: string
         category:
           type: string
         handle:
