@@ -54,6 +54,8 @@ jobs:
           ls -la ./generated-client
           git add -A
           
+          git status
+          
           if git diff --quiet; then
             echo "✅ No changes to commit"
           else
