@@ -24,11 +24,6 @@ jobs:
         run: |
           curl -sSL "${{ secrets.SPEC_URL }}" -o spec.yaml
 
-      # 3. Patch the invalid scheme name (no spaces allowed) :contentReference[oaicite:2]{index=2}
-      - name: Rename security scheme for validation
-        run: |
-          sed -i 's/Bearer Authentication/BearerAuth/g' spec.yaml
-
       # 4. (Optional) Show a base64‐encoded snippet to inspect without redaction :contentReference[oaicite:3]{index=3}
       - name: Preview spec (base64)
         run: |
@@ -48,19 +43,9 @@ jobs:
             -o generated-client \
             --skip-validate-spec
 
-      # 7. Checkout the dedicated client repo to push into it
-      - name: Checkout client repo
-        uses: actions/checkout@v3
-        with:
-          persist-credentials: true
-          fetch-depth: 0
-
-      # 8. Sync over generated code and commit if changed
+      # 7. Sync over generated code and commit if changed
       - name: Sync generated client & push
         run: |
-          rm -rf client-repo/*
-          cp -R generated-client/* client-repo/
-          cd client-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
