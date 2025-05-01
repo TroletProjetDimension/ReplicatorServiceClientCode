@@ -48,17 +48,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          ls -la
-          git status
-          rm -rf ./generated-client/.git
-          ls -la ./generated-client
           git add -A
           
-          git status
-          
-          if git diff --quiet; then
+          if git diff --cached --quiet; then
             echo "✅ No changes to commit"
           else
             git commit -m "chore: regenerate TS-Axios client"
             git push
           fi
+
