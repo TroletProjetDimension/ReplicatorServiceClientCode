@@ -73,10 +73,10 @@ export interface ProductBuilder {
     'status'?: string;
     /**
      * 
-     * @type {string}
+     * @type {Array<ProductMetafield>}
      * @memberof ProductBuilder
      */
-    'color'?: string;
+    'metafields'?: Array<ProductMetafield>;
     /**
      * 
      * @type {string}
@@ -88,7 +88,7 @@ export interface ProductBuilder {
      * @type {string}
      * @memberof ProductBuilder
      */
-    'size'?: string;
+    'color'?: string;
     /**
      * 
      * @type {string}
@@ -100,43 +100,13 @@ export interface ProductBuilder {
      * @type {string}
      * @memberof ProductBuilder
      */
-    'footwearMaterialMetaobject'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductBuilder
-     */
-    'genderMetaobject'?: string;
+    'size'?: string;
     /**
      * 
      * @type {string}
      * @memberof ProductBuilder
      */
     'descriptionHtml'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductBuilder
-     */
-    'descriptionMetafield'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductBuilder
-     */
-    'definitionEtat'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductBuilder
-     */
-    'condition'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductBuilder
-     */
-    'dimensions'?: string;
     /**
      * 
      * @type {Array<string>}
@@ -167,6 +137,37 @@ export interface ProductBuilder {
      * @memberof ProductBuilder
      */
     'location'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ProductMetafield
+ */
+export interface ProductMetafield {
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductMetafield
+     */
+    'namespace'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductMetafield
+     */
+    'key'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductMetafield
+     */
+    'type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProductMetafield
+     */
+    'value'?: string;
 }
 
 /**

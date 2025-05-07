@@ -129,27 +129,19 @@ components:
             type: string
         status:
           type: string
-        color:
-          type: string
+        metafields:
+          type: array
+          items:
+            $ref: "#/components/schemas/ProductMetafield"
         colorMetaobject:
           type: string
-        size:
+        color:
           type: string
         sizeMetaobject:
           type: string
-        footwearMaterialMetaobject:
-          type: string
-        genderMetaobject:
+        size:
           type: string
         descriptionHtml:
-          type: string
-        descriptionMetafield:
-          type: string
-        definitionEtat:
-          type: string
-        condition:
-          type: string
-        dimensions:
           type: string
         medias:
           type: array
@@ -162,6 +154,17 @@ components:
         sku:
           type: string
         location:
+          type: string
+    ProductMetafield:
+      type: object
+      properties:
+        namespace:
+          type: string
+        key:
+          type: string
+        type:
+          type: string
+        value:
           type: string
   securitySchemes:
     BearerAuth:

@@ -6,6 +6,7 @@ common.ts
 configuration.ts
 docs/ProductBuilder.md
 docs/ProductControllerApi.md
+docs/ProductMetafield.md
 docs/TestControllerApi.md
 docs/TokenControllerApi.md
 git_push.sh
