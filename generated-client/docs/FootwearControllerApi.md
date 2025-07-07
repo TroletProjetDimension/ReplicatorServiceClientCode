@@ -1,36 +1,94 @@
-# TestControllerApi
+# FootwearControllerApi
 
 All URIs are relative to *https://replicator-service-793462686782.us-central1.run.app*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**test**](#test) | **GET** /test | |
-|[**testCreate**](#testcreate) | **GET** /testcreate | |
-|[**testCreateDynamoDb**](#testcreatedynamodb) | **GET** /test-create-d | |
-|[**testFetch**](#testfetch) | **GET** /testfetch | |
-|[**testFetchDynamoDbDoesExist**](#testfetchdynamodbdoesexist) | **GET** /test-fetch-de | |
-|[**testFetchDynamoDbDoesNotExist**](#testfetchdynamodbdoesnotexist) | **GET** /test-fetch-d | |
+|[**createFootwear**](#createfootwear) | **POST** /footwear/create | Create a new footwear|
+|[**deleteFootwear**](#deletefootwear) | **DELETE** /footwear/{id} | Delete a footwear|
+|[**getAllFootwears**](#getallfootwears) | **GET** /footwear/all | Get all footwears|
+|[**getFootwear**](#getfootwear) | **GET** /footwear/{id} | Get a footwear by ID|
+|[**updateFootwear**](#updatefootwear) | **PATCH** /footwear/{id} | Partially update an existing footwear|
 
-# **test**
-> string test()
+# **createFootwear**
+> string createFootwear(footwearDto)
 
 
 ### Example
 
 ```typescript
 import {
-    TestControllerApi,
+    FootwearControllerApi,
+    Configuration,
+    FootwearDto
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+let footwearDto: FootwearDto; //
+
+const { status, data } = await apiInstance.createFootwear(
+    footwearDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **footwearDto** | **FootwearDto**|  | |
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Footwear create successfully. |  -  |
+|**403** | Bad Request. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteFootwear**
+> string deleteFootwear()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
     Configuration
 } from './api';
 
 const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
+const apiInstance = new FootwearControllerApi(configuration);
 
-const { status, data } = await apiInstance.test();
+let id: string; // (default to undefined)
+
+const { status, data } = await apiInstance.deleteFootwear(
+    id
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**string**] |  | defaults to undefined|
 
 
 ### Return type
@@ -50,26 +108,26 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | OK |  -  |
+|**200** | Footwear deleted successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **testCreate**
-> object testCreate()
+# **getAllFootwears**
+> Array<FootwearDto> getAllFootwears()
 
 
 ### Example
 
 ```typescript
 import {
-    TestControllerApi,
+    FootwearControllerApi,
     Configuration
 } from './api';
 
 const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
+const apiInstance = new FootwearControllerApi(configuration);
 
-const { status, data } = await apiInstance.testCreate();
+const { status, data } = await apiInstance.getAllFootwears();
 ```
 
 ### Parameters
@@ -78,7 +136,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**object**
+**Array<FootwearDto>**
 
 ### Authorization
 
@@ -93,35 +151,42 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | OK |  -  |
+|**200** | Footwears retrieved successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **testCreateDynamoDb**
-> object testCreateDynamoDb()
+# **getFootwear**
+> FootwearDto getFootwear()
 
 
 ### Example
 
 ```typescript
 import {
-    TestControllerApi,
+    FootwearControllerApi,
     Configuration
 } from './api';
 
 const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
+const apiInstance = new FootwearControllerApi(configuration);
 
-const { status, data } = await apiInstance.testCreateDynamoDb();
+let id: string; // (default to undefined)
+
+const { status, data } = await apiInstance.getFootwear(
+    id
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**string**] |  | defaults to undefined|
 
 
 ### Return type
 
-**object**
+**FootwearDto**
 
 ### Authorization
 
@@ -136,35 +201,46 @@ This endpoint does not have any parameters.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | OK |  -  |
+|**200** | Footwear retrieved successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **testFetch**
-> object testFetch()
+# **updateFootwear**
+> string updateFootwear(footwearDto)
 
 
 ### Example
 
 ```typescript
 import {
-    TestControllerApi,
-    Configuration
+    FootwearControllerApi,
+    Configuration,
+    FootwearDto
 } from './api';
 
 const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
+const apiInstance = new FootwearControllerApi(configuration);
 
-const { status, data } = await apiInstance.testFetch();
+let id: string; // (default to undefined)
+let footwearDto: FootwearDto; //
+
+const { status, data } = await apiInstance.updateFootwear(
+    id,
+    footwearDto
+);
 ```
 
 ### Parameters
-This endpoint does not have any parameters.
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **footwearDto** | **FootwearDto**|  | |
+| **id** | [**string**] |  | defaults to undefined|
 
 
 ### Return type
 
-**object**
+**string**
 
 ### Authorization
 
@@ -172,100 +248,14 @@ This endpoint does not have any parameters.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/hal+json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-|**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testFetchDynamoDbDoesExist**
-> object testFetchDynamoDbDoesExist()
-
-
-### Example
-
-```typescript
-import {
-    TestControllerApi,
-    Configuration
-} from './api';
-
-const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
-
-const { status, data } = await apiInstance.testFetchDynamoDbDoesExist();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-**object**
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/hal+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **testFetchDynamoDbDoesNotExist**
-> object testFetchDynamoDbDoesNotExist()
-
-
-### Example
-
-```typescript
-import {
-    TestControllerApi,
-    Configuration
-} from './api';
-
-const configuration = new Configuration();
-const apiInstance = new TestControllerApi(configuration);
-
-const { status, data } = await apiInstance.testFetchDynamoDbDoesNotExist();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-**object**
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/hal+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | OK |  -  |
+|**200** | Footwear updated successfully |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -8,7 +8,7 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 |[**updateProduct**](#updateproduct) | **POST** /product/update | Update an existing Shopify product|
 
 # **createProduct1**
-> string createProduct1(productBuilder)
+> string createProduct1(productDto)
 
 
 ### Example
@@ -17,16 +17,16 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 import {
     ProductControllerApi,
     Configuration,
-    ProductBuilder
+    ProductDto
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new ProductControllerApi(configuration);
 
-let productBuilder: ProductBuilder; //
+let productDto: ProductDto; //
 
 const { status, data } = await apiInstance.createProduct1(
-    productBuilder
+    productDto
 );
 ```
 
@@ -34,7 +34,7 @@ const { status, data } = await apiInstance.createProduct1(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **productBuilder** | **ProductBuilder**|  | |
+| **productDto** | **ProductDto**|  | |
 
 
 ### Return type
@@ -59,7 +59,7 @@ const { status, data } = await apiInstance.createProduct1(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **updateProduct**
-> string updateProduct(productBuilder)
+> string updateProduct(productDto)
 
 
 ### Example
@@ -68,16 +68,16 @@ const { status, data } = await apiInstance.createProduct1(
 import {
     ProductControllerApi,
     Configuration,
-    ProductBuilder
+    ProductDto
 } from './api';
 
 const configuration = new Configuration();
 const apiInstance = new ProductControllerApi(configuration);
 
-let productBuilder: ProductBuilder; //
+let productDto: ProductDto; //
 
 const { status, data } = await apiInstance.updateProduct(
-    productBuilder
+    productDto
 );
 ```
 
@@ -85,7 +85,7 @@ const { status, data } = await apiInstance.updateProduct(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **productBuilder** | **ProductBuilder**|  | |
+| **productDto** | **ProductDto**|  | |
 
 
 ### Return type
