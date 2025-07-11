@@ -6,6 +6,7 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 |------------- | ------------- | -------------|
 |[**createEmployee**](#createemployee) | **POST** /employee/create | Create a new employee|
 |[**deleteEmployee**](#deleteemployee) | **DELETE** /employee/{id} | Delete an employee|
+|[**deleteEmployeeFromDynamoDBOnly**](#deleteemployeefromdynamodbonly) | **DELETE** /employee/{id}/dynamodb-only | Delete an employee from DynamoDB only|
 |[**getAllEmployees**](#getallemployees) | **GET** /employees | Get all employees|
 |[**getEmployee**](#getemployee) | **GET** /employee/{id} | Get an employee by ID|
 |[**updateEmployee**](#updateemployee) | **PATCH** /employee/{id} | Partially update an existing employee|
@@ -112,6 +113,61 @@ const { status, data } = await apiInstance.deleteEmployee(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Employee deleted successfully |  -  |
+|**400** | Bad Request. |  -  |
+|**401** | Unauthorized - Invalid or missing authentication token. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**404** | Employee not found. |  -  |
+|**500** | Internal Server Error. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteEmployeeFromDynamoDBOnly**
+> string deleteEmployeeFromDynamoDBOnly()
+
+
+### Example
+
+```typescript
+import {
+    EmployeeControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new EmployeeControllerApi(configuration);
+
+let id: string; // (default to undefined)
+
+const { status, data } = await apiInstance.deleteEmployeeFromDynamoDBOnly(
+    id
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Employee deleted successfully from DynamoDB |  -  |
 |**400** | Bad Request. |  -  |
 |**401** | Unauthorized - Invalid or missing authentication token. |  -  |
 |**403** | Forbidden - Insufficient permissions. |  -  |
