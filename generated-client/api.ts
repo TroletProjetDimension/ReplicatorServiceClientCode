@@ -883,12 +883,50 @@ export const EmployeeControllerApiAxiosParamCreator = function (configuration?: 
         },
         /**
          * 
+         * @summary Check if employee exists in DynamoDB by ID
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        employeeExistsInDynamoDB: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('employeeExistsInDynamoDB', 'id', id)
+            const localVarPath = `/employee/{id}/exists`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get all employees
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         getAllEmployees: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/employees`;
+            const localVarPath = `/employee/all`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1048,6 +1086,19 @@ export const EmployeeControllerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Check if employee exists in DynamoDB by ID
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async employeeExistsInDynamoDB(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.employeeExistsInDynamoDB(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['EmployeeControllerApi.employeeExistsInDynamoDB']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get all employees
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1127,6 +1178,16 @@ export const EmployeeControllerApiFactory = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Check if employee exists in DynamoDB by ID
+         * @param {string} id 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        employeeExistsInDynamoDB(id: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.employeeExistsInDynamoDB(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all employees
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1199,6 +1260,18 @@ export class EmployeeControllerApi extends BaseAPI {
      */
     public deleteEmployeeFromDynamoDBOnly(id: string, options?: RawAxiosRequestConfig) {
         return EmployeeControllerApiFp(this.configuration).deleteEmployeeFromDynamoDBOnly(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Check if employee exists in DynamoDB by ID
+     * @param {string} id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof EmployeeControllerApi
+     */
+    public employeeExistsInDynamoDB(id: string, options?: RawAxiosRequestConfig) {
+        return EmployeeControllerApiFp(this.configuration).employeeExistsInDynamoDB(id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2244,6 +2317,44 @@ export const KindeUsersControllerApiAxiosParamCreator = function (configuration?
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 
+         * @summary Check if Kinde user exists by ID
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userExists: async (userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('userExists', 'userId', userId)
+            const localVarPath = `/kinde/user/{userId}/exists`
+                .replace(`{${"userId"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -2292,6 +2403,19 @@ export const KindeUsersControllerApiFp = function(configuration?: Configuration)
             const localVarOperationServerBasePath = operationServerMap['KindeUsersControllerApi.getUserById']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 
+         * @summary Check if Kinde user exists by ID
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userExists(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userExists(userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['KindeUsersControllerApi.userExists']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -2330,6 +2454,16 @@ export const KindeUsersControllerApiFactory = function (configuration?: Configur
          */
         getUserById(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<KindeUserDto> {
             return localVarFp.getUserById(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Check if Kinde user exists by ID
+         * @param {string} userId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userExists(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.userExists(userId, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2374,6 +2508,18 @@ export class KindeUsersControllerApi extends BaseAPI {
      */
     public getUserById(userId: string, options?: RawAxiosRequestConfig) {
         return KindeUsersControllerApiFp(this.configuration).getUserById(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Check if Kinde user exists by ID
+     * @param {string} userId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KindeUsersControllerApi
+     */
+    public userExists(userId: string, options?: RawAxiosRequestConfig) {
+        return KindeUsersControllerApiFp(this.configuration).userExists(userId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
