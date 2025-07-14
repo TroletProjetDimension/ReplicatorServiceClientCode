@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **procedures** | [**ProceduresDto**](ProceduresDto.md) |  | [optional] [default to undefined]
 **currentStep** | **number** |  | [optional] [default to undefined]
 **stepHistory** | **Array&lt;number&gt;** |  | [optional] [default to undefined]
-**comments** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**comments** | [**Array&lt;CommentDto&gt;**](CommentDto.md) |  | [optional] [default to undefined]
 **repairs** | [**Array&lt;RepairDto&gt;**](RepairDto.md) |  | [optional] [default to undefined]
 **attributes** | [**AttributesDto**](AttributesDto.md) |  | [optional] [default to undefined]
 **washMethod** | **string** |  | [optional] [default to undefined]

@@ -141,6 +141,37 @@ export interface AttributesDto {
 /**
  * 
  * @export
+ * @interface CommentDto
+ */
+export interface CommentDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CommentDto
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CommentDto
+     */
+    'sender'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CommentDto
+     */
+    'timestamp'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CommentDto
+     */
+    'content'?: string;
+}
+/**
+ * 
+ * @export
  * @interface EmployeeDto
  */
 export interface EmployeeDto {
@@ -243,10 +274,10 @@ export interface FootwearDto {
     'stepHistory'?: Array<number>;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<CommentDto>}
      * @memberof FootwearDto
      */
-    'comments'?: Array<string>;
+    'comments'?: Array<CommentDto>;
     /**
      * 
      * @type {Array<RepairDto>}

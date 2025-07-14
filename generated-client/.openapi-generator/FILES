@@ -5,6 +5,7 @@ base.ts
 common.ts
 configuration.ts
 docs/AttributesDto.md
+docs/CommentDto.md
 docs/EmployeeControllerApi.md
 docs/EmployeeDto.md
 docs/FootwearControllerApi.md
