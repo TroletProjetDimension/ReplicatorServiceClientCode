@@ -235,7 +235,7 @@ const { status, data } = await apiInstance.deletePhotoFromDatabase(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **getAllFootwears**
-> FootwearDto getAllFootwears()
+> Array<FootwearDto> getAllFootwears()
 
 
 ### Example
@@ -258,7 +258,7 @@ This endpoint does not have any parameters.
 
 ### Return type
 
-**FootwearDto**
+**Array<FootwearDto>**
 
 ### Authorization
 

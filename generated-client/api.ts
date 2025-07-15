@@ -1870,7 +1870,7 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllFootwears(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FootwearDto>> {
+        async getAllFootwears(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<FootwearDto>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllFootwears(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getAllFootwears']?.[localVarOperationServerIndex]?.url;
@@ -2015,7 +2015,7 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllFootwears(options?: RawAxiosRequestConfig): AxiosPromise<FootwearDto> {
+        getAllFootwears(options?: RawAxiosRequestConfig): AxiosPromise<Array<FootwearDto>> {
             return localVarFp.getAllFootwears(options).then((request) => request(axios, basePath));
         },
         /**
