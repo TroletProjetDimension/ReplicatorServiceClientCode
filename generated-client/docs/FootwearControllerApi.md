@@ -12,6 +12,10 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 |[**getFile**](#getfile) | **GET** /footwear/files/{fileName} | Get file (serve actual image)|
 |[**getFileInfo**](#getfileinfo) | **GET** /footwear/files/{fileName}/info | Get file info|
 |[**getFootwear**](#getfootwear) | **GET** /footwear/{id} | Get a footwear by ID with file URLs|
+|[**getTakenLocations**](#gettakenlocations) | **GET** /footwear/locations/taken | Get all taken footwear locations. Returns only the location strings that are currently in use|
+|[**getTakenLocationsCount**](#gettakenlocationscount) | **GET** /footwear/locations/taken/count | Get count of taken locations|
+|[**isLocationTaken**](#islocationtaken) | **GET** /footwear/locations/taken/check/{location} | Verify if a specific location is taken|
+|[**removeByLocation**](#removebylocation) | **DELETE** /footwear/locations/{location} | Remove footwear by location (for storage code liberation)|
 |[**updateFootwearData**](#updatefootweardata) | **PATCH** /footwear/{id} | Update footwear data (DynamoDB)|
 |[**updateFootwearFiles**](#updatefootwearfiles) | **PATCH** /footwear/{id}/files | Update footwear files (B2)|
 |[**uploadFootwearImage**](#uploadfootwearimage) | **POST** /footwear/files | Upload footwear image|
@@ -443,6 +447,209 @@ const { status, data } = await apiInstance.getFootwear(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getTakenLocations**
+> Array<string> getTakenLocations()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+const { status, data } = await apiInstance.getTakenLocations();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+**Array<string>**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | footwear locations fetched successfully. |  -  |
+|**400** | Bad Request - Invalid input data. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**409** | Conflict |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getTakenLocationsCount**
+> number getTakenLocationsCount()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+const { status, data } = await apiInstance.getTakenLocationsCount();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+**number**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | taken locations count fetched successfully. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **isLocationTaken**
+> boolean isLocationTaken()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+let location: string; // (default to undefined)
+
+const { status, data } = await apiInstance.isLocationTaken(
+    location
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **location** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Location checked successfully. |  -  |
+|**400** | Bad Request - Invalid input data. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **removeByLocation**
+> boolean removeByLocation()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+let location: string; // (default to undefined)
+
+const { status, data } = await apiInstance.removeByLocation(
+    location
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **location** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**boolean**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Location liberated successfully. |  -  |
+|**400** | Bad Request - Invalid input data. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**404** | Not Found - Footwear with specified location not found. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **updateFootwearData**
 > string updateFootwearData(footwearDto)
 
@@ -561,7 +768,11 @@ const { status, data } = await apiInstance.updateFootwearFiles(
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 |**200** | Footwear files updated successfully. |  -  |
-|**403** | Bad Request. |  -  |
+|**400** | Bad Request - Invalid input data. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**404** | Not Found - Footwear with specified ID not found. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

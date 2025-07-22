@@ -296,6 +296,30 @@ export interface FootwearDto {
      * @memberof FootwearDto
      */
     'washMethod'?: FootwearDtoWashMethodEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof FootwearDto
+     */
+    'location'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FootwearDto
+     */
+    'archived'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FootwearDto
+     */
+    'backtracked'?: boolean;
+    /**
+     * 
+     * @type {Array<StepDto>}
+     * @memberof FootwearDto
+     */
+    'operationTime'?: Array<StepDto>;
 }
 
 export const FootwearDtoQualityEnum = {
@@ -317,10 +341,10 @@ export const FootwearDtoConditionEnum = {
 
 export type FootwearDtoConditionEnum = typeof FootwearDtoConditionEnum[keyof typeof FootwearDtoConditionEnum];
 export const FootwearDtoWashMethodEnum = {
-    CleaningWithBrushMachine: 'Cleaning with brush machine',
-    HighPressureCleaning: 'High-pressure cleaning',
-    WashingMachine: 'Washing machine',
-    CleaningTheInsole: 'Cleaning the insole'
+    BrushMachine: 'Brush Machine',
+    HighPressure: 'High-Pressure',
+    WashingMachine: 'Washing Machine',
+    Insole: 'Insole'
 } as const;
 
 export type FootwearDtoWashMethodEnum = typeof FootwearDtoWashMethodEnum[keyof typeof FootwearDtoWashMethodEnum];
@@ -738,6 +762,37 @@ export const RepairDtoStatusEnum = {
 
 export type RepairDtoStatusEnum = typeof RepairDtoStatusEnum[keyof typeof RepairDtoStatusEnum];
 
+/**
+ * 
+ * @export
+ * @interface StepDto
+ */
+export interface StepDto {
+    /**
+     * 
+     * @type {number}
+     * @memberof StepDto
+     */
+    'currStep'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof StepDto
+     */
+    'duration'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepDto
+     */
+    'start'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof StepDto
+     */
+    'end'?: string;
+}
 /**
  * 
  * @export
@@ -1654,6 +1709,150 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
         },
         /**
          * 
+         * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTakenLocations: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/footwear/locations/taken`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get count of taken locations
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTakenLocationsCount: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/footwear/locations/taken/count`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Verify if a specific location is taken
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        isLocationTaken: async (location: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'location' is not null or undefined
+            assertParamExists('isLocationTaken', 'location', location)
+            const localVarPath = `/footwear/locations/taken/check/{location}`
+                .replace(`{${"location"}}`, encodeURIComponent(String(location)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Remove footwear by location (for storage code liberation)
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        removeByLocation: async (location: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'location' is not null or undefined
+            assertParamExists('removeByLocation', 'location', location)
+            const localVarPath = `/footwear/locations/{location}`
+                .replace(`{${"location"}}`, encodeURIComponent(String(location)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Update footwear data (DynamoDB)
          * @param {string} id 
          * @param {FootwearDto} footwearDto 
@@ -1917,6 +2116,56 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTakenLocations(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<string>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTakenLocations(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getTakenLocations']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get count of taken locations
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getTakenLocationsCount(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<number>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getTakenLocationsCount(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getTakenLocationsCount']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Verify if a specific location is taken
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async isLocationTaken(location: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.isLocationTaken(location, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.isLocationTaken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Remove footwear by location (for storage code liberation)
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async removeByLocation(location: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.removeByLocation(location, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.removeByLocation']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Update footwear data (DynamoDB)
          * @param {string} id 
          * @param {FootwearDto} footwearDto 
@@ -2047,6 +2296,44 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
          */
         getFootwear(id: string, options?: RawAxiosRequestConfig): AxiosPromise<FootwearDto> {
             return localVarFp.getFootwear(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTakenLocations(options?: RawAxiosRequestConfig): AxiosPromise<Array<string>> {
+            return localVarFp.getTakenLocations(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get count of taken locations
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getTakenLocationsCount(options?: RawAxiosRequestConfig): AxiosPromise<number> {
+            return localVarFp.getTakenLocationsCount(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Verify if a specific location is taken
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        isLocationTaken(location: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.isLocationTaken(location, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Remove footwear by location (for storage code liberation)
+         * @param {string} location 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        removeByLocation(location: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
+            return localVarFp.removeByLocation(location, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2186,6 +2473,52 @@ export class FootwearControllerApi extends BaseAPI {
      */
     public getFootwear(id: string, options?: RawAxiosRequestConfig) {
         return FootwearControllerApiFp(this.configuration).getFootwear(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public getTakenLocations(options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).getTakenLocations(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get count of taken locations
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public getTakenLocationsCount(options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).getTakenLocationsCount(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Verify if a specific location is taken
+     * @param {string} location 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public isLocationTaken(location: string, options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).isLocationTaken(location, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Remove footwear by location (for storage code liberation)
+     * @param {string} location 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public removeByLocation(location: string, options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).removeByLocation(location, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

@@ -17,6 +17,10 @@ Name | Type | Description | Notes
 **repairs** | [**Array&lt;RepairDto&gt;**](RepairDto.md) |  | [optional] [default to undefined]
 **attributes** | [**AttributesDto**](AttributesDto.md) |  | [optional] [default to undefined]
 **washMethod** | **string** |  | [optional] [default to undefined]
+**location** | **string** |  | [optional] [default to undefined]
+**archived** | **boolean** |  | [optional] [default to undefined]
+**backtracked** | **boolean** |  | [optional] [default to undefined]
+**operationTime** | [**Array&lt;StepDto&gt;**](StepDto.md) |  | [optional] [default to undefined]
 
 ## Example
 
@@ -36,6 +40,10 @@ const instance: FootwearDto = {
     repairs,
     attributes,
     washMethod,
+    location,
+    archived,
+    backtracked,
+    operationTime,
 };
 ```
 

@@ -17,6 +17,7 @@ docs/ProceduresDto.md
 docs/ProductControllerApi.md
 docs/ProductDto.md
 docs/RepairDto.md
+docs/StepDto.md
 docs/SuccessResponse.md
 docs/TestControllerApi.md
 docs/TokenControllerApi.md
