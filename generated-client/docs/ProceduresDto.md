@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **washed** | **boolean** |  | [optional] [default to undefined]
 **dried** | **boolean** |  | [optional] [default to undefined]
 **packaged** | **boolean** |  | [optional] [default to undefined]
+**rfidWritten** | **boolean** |  | [optional] [default to undefined]
 
 ## Example
 
@@ -28,6 +29,7 @@ const instance: ProceduresDto = {
     washed,
     dried,
     packaged,
+    rfidWritten,
 };
 ```
 

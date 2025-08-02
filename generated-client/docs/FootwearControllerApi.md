@@ -9,13 +9,14 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 |[**deleteFootwearImage**](#deletefootwearimage) | **DELETE** /footwear/files/{fileName} | Delete footwear image in B2 bucket|
 |[**deletePhotoFromDatabase**](#deletephotofromdatabase) | **DELETE** /footwear/files/{fileName}/database | Delete a specific photo from footwear photo group by filename in DynamoDB|
 |[**getAllFootwears**](#getallfootwears) | **GET** /footwear/all | Get all footwears with file URLs|
+|[**getAllFootwearsFilteredPaginated**](#getallfootwearsfilteredpaginated) | **POST** /footwear/all/paginated/filtered | Get all footwears with file URLs (paginated)|
 |[**getFile**](#getfile) | **GET** /footwear/files/{fileName} | Get file (serve actual image)|
 |[**getFileInfo**](#getfileinfo) | **GET** /footwear/files/{fileName}/info | Get file info|
 |[**getFootwear**](#getfootwear) | **GET** /footwear/{id} | Get a footwear by ID with file URLs|
+|[**getFootwearAttributeRanges**](#getfootwearattributeranges) | **GET** /footwear/attributes/ranges | Get min/max ranges for numeric footwear attributes|
 |[**getTakenLocations**](#gettakenlocations) | **GET** /footwear/locations/taken | Get all taken footwear locations. Returns only the location strings that are currently in use|
 |[**getTakenLocationsCount**](#gettakenlocationscount) | **GET** /footwear/locations/taken/count | Get count of taken locations|
 |[**isLocationTaken**](#islocationtaken) | **GET** /footwear/locations/taken/check/{location} | Verify if a specific location is taken|
-|[**removeByLocation**](#removebylocation) | **DELETE** /footwear/locations/{location} | Remove footwear by location (for storage code liberation)|
 |[**updateFootwearData**](#updatefootweardata) | **PATCH** /footwear/{id} | Update footwear data (DynamoDB)|
 |[**updateFootwearFiles**](#updatefootwearfiles) | **PATCH** /footwear/{id}/files | Update footwear files (B2)|
 |[**uploadFootwearImage**](#uploadfootwearimage) | **POST** /footwear/files | Upload footwear image|
@@ -284,6 +285,73 @@ This endpoint does not have any parameters.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getAllFootwearsFilteredPaginated**
+> PaginatedResponseDto getAllFootwearsFilteredPaginated()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration,
+    FootwearFilterRequestDto
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+let size: number; //Number of items per page (optional) (default to 20)
+let sortBy: string; //Sort field (optional) (default to 'id')
+let sortDir: string; //Sort direction (optional) (default to 'desc')
+let nextPageToken: string; //Token for next page (optional) (default to undefined)
+let footwearFilterRequestDto: FootwearFilterRequestDto; // (optional)
+
+const { status, data } = await apiInstance.getAllFootwearsFilteredPaginated(
+    size,
+    sortBy,
+    sortDir,
+    nextPageToken,
+    footwearFilterRequestDto
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **footwearFilterRequestDto** | **FootwearFilterRequestDto**|  | |
+| **size** | [**number**] | Number of items per page | (optional) defaults to 20|
+| **sortBy** | [**string**] | Sort field | (optional) defaults to 'id'|
+| **sortDir** | [**string**] | Sort direction | (optional) defaults to 'desc'|
+| **nextPageToken** | [**string**] | Token for next page | (optional) defaults to undefined|
+
+
+### Return type
+
+**PaginatedResponseDto**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Footwears retrieved successfully. |  -  |
+|**400** | Bad Request - Invalid pagination parameters. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getFile**
 > File getFile()
 
@@ -447,6 +515,52 @@ const { status, data } = await apiInstance.getFootwear(
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **getFootwearAttributeRanges**
+> FootwearAttributeRangesDto getFootwearAttributeRanges()
+
+
+### Example
+
+```typescript
+import {
+    FootwearControllerApi,
+    Configuration
+} from './api';
+
+const configuration = new Configuration();
+const apiInstance = new FootwearControllerApi(configuration);
+
+const { status, data } = await apiInstance.getFootwearAttributeRanges();
+```
+
+### Parameters
+This endpoint does not have any parameters.
+
+
+### Return type
+
+**FootwearAttributeRangesDto**
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** | Attribute ranges retrieved successfully. |  -  |
+|**401** | Unauthorized - Authentication required. |  -  |
+|**403** | Forbidden - Insufficient permissions. |  -  |
+|**500** | Internal Server Error - Unexpected error occurred. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **getTakenLocations**
 > Array<string> getTakenLocations()
 
@@ -591,61 +705,6 @@ const { status, data } = await apiInstance.isLocationTaken(
 |**400** | Bad Request - Invalid input data. |  -  |
 |**401** | Unauthorized - Authentication required. |  -  |
 |**403** | Forbidden - Insufficient permissions. |  -  |
-|**500** | Internal Server Error - Unexpected error occurred. |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **removeByLocation**
-> boolean removeByLocation()
-
-
-### Example
-
-```typescript
-import {
-    FootwearControllerApi,
-    Configuration
-} from './api';
-
-const configuration = new Configuration();
-const apiInstance = new FootwearControllerApi(configuration);
-
-let location: string; // (default to undefined)
-
-const { status, data } = await apiInstance.removeByLocation(
-    location
-);
-```
-
-### Parameters
-
-|Name | Type | Description  | Notes|
-|------------- | ------------- | ------------- | -------------|
-| **location** | [**string**] |  | defaults to undefined|
-
-
-### Return type
-
-**boolean**
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | Location liberated successfully. |  -  |
-|**400** | Bad Request - Invalid input data. |  -  |
-|**401** | Unauthorized - Authentication required. |  -  |
-|**403** | Forbidden - Insufficient permissions. |  -  |
-|**404** | Not Found - Footwear with specified location not found. |  -  |
 |**500** | Internal Server Error - Unexpected error occurred. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

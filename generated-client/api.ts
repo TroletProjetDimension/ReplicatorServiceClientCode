@@ -221,6 +221,43 @@ export interface EmployeeDto {
 /**
  * 
  * @export
+ * @interface FootwearAttributeRangesDto
+ */
+export interface FootwearAttributeRangesDto {
+    /**
+     * 
+     * @type {NumericRange}
+     * @memberof FootwearAttributeRangesDto
+     */
+    'usSize'?: NumericRange;
+    /**
+     * 
+     * @type {NumericRange}
+     * @memberof FootwearAttributeRangesDto
+     */
+    'euSize'?: NumericRange;
+    /**
+     * 
+     * @type {NumericRange}
+     * @memberof FootwearAttributeRangesDto
+     */
+    'cmSize'?: NumericRange;
+    /**
+     * 
+     * @type {NumericRange}
+     * @memberof FootwearAttributeRangesDto
+     */
+    'cmShoeWidth'?: NumericRange;
+    /**
+     * 
+     * @type {NumericRange}
+     * @memberof FootwearAttributeRangesDto
+     */
+    'originalPrice'?: NumericRange;
+}
+/**
+ * 
+ * @export
  * @interface FootwearDto
  */
 export interface FootwearDto {
@@ -352,6 +389,157 @@ export type FootwearDtoWashMethodEnum = typeof FootwearDtoWashMethodEnum[keyof t
 /**
  * 
  * @export
+ * @interface FootwearFilterRequestDto
+ */
+export interface FootwearFilterRequestDto {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'quality'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'condition'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'currentStep'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'sizeVisible'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'washMethod'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'brand'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'model'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'category'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'type'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'color'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'material'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'closure'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'shoeStyle'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'shoeShaftStyle'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'outsoleMaterial'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'pattern'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'stdShoeWidth'?: Array<string>;
+    /**
+     * 
+     * @type {{ [key: string]: NumericRange; }}
+     * @memberof FootwearFilterRequestDto
+     */
+    'ranges'?: { [key: string]: NumericRange; };
+    /**
+     * 
+     * @type {{ [key: string]: boolean; }}
+     * @memberof FootwearFilterRequestDto
+     */
+    'numericFiltersEnabled'?: { [key: string]: boolean; };
+    /**
+     * 
+     * @type {boolean}
+     * @memberof FootwearFilterRequestDto
+     */
+    'showOnlyMissing'?: boolean;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'selectedSmallRepairs'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'selectedMediumRepairs'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof FootwearFilterRequestDto
+     */
+    'selectedLargeRepairs'?: Array<string>;
+    /**
+     * 
+     * @type {string}
+     * @memberof FootwearFilterRequestDto
+     */
+    'searchTerm'?: string;
+}
+/**
+ * 
+ * @export
  * @interface KindeUserDto
  */
 export interface KindeUserDto {
@@ -455,6 +643,62 @@ export interface KindeUserDto {
 /**
  * 
  * @export
+ * @interface NumericRange
+ */
+export interface NumericRange {
+    /**
+     * 
+     * @type {number}
+     * @memberof NumericRange
+     */
+    'min'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof NumericRange
+     */
+    'max'?: number;
+}
+/**
+ * Paginated response for DynamoDB data
+ * @export
+ * @interface PaginatedResponseDto
+ */
+export interface PaginatedResponseDto {
+    /**
+     * List of items for current page
+     * @type {Array<FootwearDto>}
+     * @memberof PaginatedResponseDto
+     */
+    'content'?: Array<FootwearDto>;
+    /**
+     * Token for next page (use as lastEvaluatedKey for next request)
+     * @type {string}
+     * @memberof PaginatedResponseDto
+     */
+    'nextPageToken'?: string;
+    /**
+     * Whether there are more results available
+     * @type {boolean}
+     * @memberof PaginatedResponseDto
+     */
+    'hasMoreResults'?: boolean;
+    /**
+     * Number of items returned in current page
+     * @type {number}
+     * @memberof PaginatedResponseDto
+     */
+    'pageSize'?: number;
+    /**
+     * Total number of items across all pages
+     * @type {number}
+     * @memberof PaginatedResponseDto
+     */
+    'totalElements'?: number;
+}
+/**
+ * 
+ * @export
  * @interface PhotoGroupDto
  */
 export interface PhotoGroupDto {
@@ -531,6 +775,12 @@ export interface ProceduresDto {
      * @memberof ProceduresDto
      */
     'packaged'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ProceduresDto
+     */
+    'rfidWritten'?: boolean;
 }
 /**
  * 
@@ -1595,6 +1845,64 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
         },
         /**
          * 
+         * @summary Get all footwears with file URLs (paginated)
+         * @param {number} [size] Number of items per page
+         * @param {string} [sortBy] Sort field
+         * @param {string} [sortDir] Sort direction
+         * @param {string} [nextPageToken] Token for next page
+         * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllFootwearsFilteredPaginated: async (size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/footwear/all/paginated/filtered`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (size !== undefined) {
+                localVarQueryParameter['size'] = size;
+            }
+
+            if (sortBy !== undefined) {
+                localVarQueryParameter['sortBy'] = sortBy;
+            }
+
+            if (sortDir !== undefined) {
+                localVarQueryParameter['sortDir'] = sortDir;
+            }
+
+            if (nextPageToken !== undefined) {
+                localVarQueryParameter['nextPageToken'] = nextPageToken;
+            }
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(footwearFilterRequestDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get file (serve actual image)
          * @param {string} fileName 
          * @param {*} [options] Override http request option.
@@ -1709,6 +2017,40 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
         },
         /**
          * 
+         * @summary Get min/max ranges for numeric footwear attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFootwearAttributeRanges: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/footwear/attributes/ranges`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -1795,44 +2137,6 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
             }
 
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Remove footwear by location (for storage code liberation)
-         * @param {string} location 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        removeByLocation: async (location: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'location' is not null or undefined
-            assertParamExists('removeByLocation', 'location', location)
-            const localVarPath = `/footwear/locations/{location}`
-                .replace(`{${"location"}}`, encodeURIComponent(String(location)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -2077,6 +2381,23 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get all footwears with file URLs (paginated)
+         * @param {number} [size] Number of items per page
+         * @param {string} [sortBy] Sort field
+         * @param {string} [sortDir] Sort direction
+         * @param {string} [nextPageToken] Token for next page
+         * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getAllFootwearsFilteredPaginated(size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedResponseDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getAllFootwearsFilteredPaginated']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get file (serve actual image)
          * @param {string} fileName 
          * @param {*} [options] Override http request option.
@@ -2116,6 +2437,18 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get min/max ranges for numeric footwear attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFootwearAttributeRanges(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FootwearAttributeRangesDto>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFootwearAttributeRanges(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getFootwearAttributeRanges']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2149,19 +2482,6 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.isLocationTaken(location, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.isLocationTaken']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Remove footwear by location (for storage code liberation)
-         * @param {string} location 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async removeByLocation(location: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<boolean>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.removeByLocation(location, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.removeByLocation']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -2269,6 +2589,20 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Get all footwears with file URLs (paginated)
+         * @param {number} [size] Number of items per page
+         * @param {string} [sortBy] Sort field
+         * @param {string} [sortDir] Sort direction
+         * @param {string} [nextPageToken] Token for next page
+         * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getAllFootwearsFilteredPaginated(size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseDto> {
+            return localVarFp.getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get file (serve actual image)
          * @param {string} fileName 
          * @param {*} [options] Override http request option.
@@ -2299,6 +2633,15 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
         },
         /**
          * 
+         * @summary Get min/max ranges for numeric footwear attributes
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFootwearAttributeRanges(options?: RawAxiosRequestConfig): AxiosPromise<FootwearAttributeRangesDto> {
+            return localVarFp.getFootwearAttributeRanges(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2324,16 +2667,6 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
          */
         isLocationTaken(location: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
             return localVarFp.isLocationTaken(location, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Remove footwear by location (for storage code liberation)
-         * @param {string} location 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        removeByLocation(location: string, options?: RawAxiosRequestConfig): AxiosPromise<boolean> {
-            return localVarFp.removeByLocation(location, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2441,6 +2774,22 @@ export class FootwearControllerApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get all footwears with file URLs (paginated)
+     * @param {number} [size] Number of items per page
+     * @param {string} [sortBy] Sort field
+     * @param {string} [sortDir] Sort direction
+     * @param {string} [nextPageToken] Token for next page
+     * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public getAllFootwearsFilteredPaginated(size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get file (serve actual image)
      * @param {string} fileName 
      * @param {*} [options] Override http request option.
@@ -2477,6 +2826,17 @@ export class FootwearControllerApi extends BaseAPI {
 
     /**
      * 
+     * @summary Get min/max ranges for numeric footwear attributes
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FootwearControllerApi
+     */
+    public getFootwearAttributeRanges(options?: RawAxiosRequestConfig) {
+        return FootwearControllerApiFp(this.configuration).getFootwearAttributeRanges(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Get all taken footwear locations. Returns only the location strings that are currently in use
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2507,18 +2867,6 @@ export class FootwearControllerApi extends BaseAPI {
      */
     public isLocationTaken(location: string, options?: RawAxiosRequestConfig) {
         return FootwearControllerApiFp(this.configuration).isLocationTaken(location, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Remove footwear by location (for storage code liberation)
-     * @param {string} location 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public removeByLocation(location: string, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).removeByLocation(location, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

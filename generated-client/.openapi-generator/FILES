@@ -8,10 +8,14 @@ docs/AttributesDto.md
 docs/CommentDto.md
 docs/EmployeeControllerApi.md
 docs/EmployeeDto.md
+docs/FootwearAttributeRangesDto.md
 docs/FootwearControllerApi.md
 docs/FootwearDto.md
+docs/FootwearFilterRequestDto.md
 docs/KindeUserDto.md
 docs/KindeUsersControllerApi.md
+docs/NumericRange.md
+docs/PaginatedResponseDto.md
 docs/PhotoGroupDto.md
 docs/ProceduresDto.md
 docs/ProductControllerApi.md
