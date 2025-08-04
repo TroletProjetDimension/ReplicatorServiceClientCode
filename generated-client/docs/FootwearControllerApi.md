@@ -304,7 +304,7 @@ const apiInstance = new FootwearControllerApi(configuration);
 let size: number; //Number of items per page (optional) (default to 20)
 let sortBy: string; //Sort field (optional) (default to 'id')
 let sortDir: string; //Sort direction (optional) (default to 'desc')
-let nextPageToken: string; //Token for next page (optional) (default to undefined)
+let nextPageToken: string; //Token for next page (base64 encoded pagination token) (optional) (default to undefined)
 let footwearFilterRequestDto: FootwearFilterRequestDto; // (optional)
 
 const { status, data } = await apiInstance.getAllFootwearsFilteredPaginated(
@@ -324,7 +324,7 @@ const { status, data } = await apiInstance.getAllFootwearsFilteredPaginated(
 | **size** | [**number**] | Number of items per page | (optional) defaults to 20|
 | **sortBy** | [**string**] | Sort field | (optional) defaults to 'id'|
 | **sortDir** | [**string**] | Sort direction | (optional) defaults to 'desc'|
-| **nextPageToken** | [**string**] | Token for next page | (optional) defaults to undefined|
+| **nextPageToken** | [**string**] | Token for next page (base64 encoded pagination token) | (optional) defaults to undefined|
 
 
 ### Return type

@@ -1849,7 +1849,7 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
          * @param {number} [size] Number of items per page
          * @param {string} [sortBy] Sort field
          * @param {string} [sortDir] Sort direction
-         * @param {string} [nextPageToken] Token for next page
+         * @param {string} [nextPageToken] Token for next page (base64 encoded pagination token)
          * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2385,7 +2385,7 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
          * @param {number} [size] Number of items per page
          * @param {string} [sortBy] Sort field
          * @param {string} [sortDir] Sort direction
-         * @param {string} [nextPageToken] Token for next page
+         * @param {string} [nextPageToken] Token for next page (base64 encoded pagination token)
          * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2593,7 +2593,7 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
          * @param {number} [size] Number of items per page
          * @param {string} [sortBy] Sort field
          * @param {string} [sortDir] Sort direction
-         * @param {string} [nextPageToken] Token for next page
+         * @param {string} [nextPageToken] Token for next page (base64 encoded pagination token)
          * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2778,7 +2778,7 @@ export class FootwearControllerApi extends BaseAPI {
      * @param {number} [size] Number of items per page
      * @param {string} [sortBy] Sort field
      * @param {string} [sortDir] Sort direction
-     * @param {string} [nextPageToken] Token for next page
+     * @param {string} [nextPageToken] Token for next page (base64 encoded pagination token)
      * @param {FootwearFilterRequestDto} [footwearFilterRequestDto] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
