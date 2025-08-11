@@ -12,6 +12,7 @@ docs/FootwearAttributeRangesDto.md
 docs/FootwearControllerApi.md
 docs/FootwearDto.md
 docs/FootwearFilterRequestDto.md
+docs/GoogleDriveControllerApi.md
 docs/KindeUserDto.md
 docs/KindeUsersControllerApi.md
 docs/NumericRange.md

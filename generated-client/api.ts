@@ -329,10 +329,10 @@ export interface FootwearDto {
     'attributes'?: AttributesDto;
     /**
      * 
-     * @type {string}
+     * @type {Array<string>}
      * @memberof FootwearDto
      */
-    'washMethod'?: FootwearDtoWashMethodEnum;
+    'washMethodList'?: Array<FootwearDtoWashMethodListEnum>;
     /**
      * 
      * @type {string}
@@ -377,14 +377,14 @@ export const FootwearDtoConditionEnum = {
 } as const;
 
 export type FootwearDtoConditionEnum = typeof FootwearDtoConditionEnum[keyof typeof FootwearDtoConditionEnum];
-export const FootwearDtoWashMethodEnum = {
+export const FootwearDtoWashMethodListEnum = {
     BrushMachine: 'Brush Machine',
     HighPressure: 'High-Pressure',
     WashingMachine: 'Washing Machine',
     Insole: 'Insole'
 } as const;
 
-export type FootwearDtoWashMethodEnum = typeof FootwearDtoWashMethodEnum[keyof typeof FootwearDtoWashMethodEnum];
+export type FootwearDtoWashMethodListEnum = typeof FootwearDtoWashMethodListEnum[keyof typeof FootwearDtoWashMethodListEnum];
 
 /**
  * 
@@ -421,7 +421,7 @@ export interface FootwearFilterRequestDto {
      * @type {Array<string>}
      * @memberof FootwearFilterRequestDto
      */
-    'washMethod'?: Array<string>;
+    'washMethodList'?: Array<string>;
     /**
      * 
      * @type {Array<string>}
@@ -2908,6 +2908,264 @@ export class FootwearControllerApi extends BaseAPI {
      */
     public uploadFootwearImage(uploadFootwearImageRequest?: UploadFootwearImageRequest, options?: RawAxiosRequestConfig) {
         return FootwearControllerApiFp(this.configuration).uploadFootwearImage(uploadFootwearImageRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * GoogleDriveControllerApi - axios parameter creator
+ * @export
+ */
+export const GoogleDriveControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Download a specific Google Drive file and upload it to B2 service
+         * @param {string} fileId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadAndUploadFile: async (fileId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fileId' is not null or undefined
+            assertParamExists('downloadAndUploadFile', 'fileId', fileId)
+            const localVarPath = `/api/google-drive/file/{fileId}/upload`
+                .replace(`{${"fileId"}}`, encodeURIComponent(String(fileId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get image file IDs from a public Google Drive folder
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFolderImages: async (folderId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'folderId' is not null or undefined
+            assertParamExists('getFolderImages', 'folderId', folderId)
+            const localVarPath = `/api/google-drive/folder/{folderId}/images`
+                .replace(`{${"folderId"}}`, encodeURIComponent(String(folderId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Process folder and upload all images to B2 service
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        processFolderImages: async (folderId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'folderId' is not null or undefined
+            assertParamExists('processFolderImages', 'folderId', folderId)
+            const localVarPath = `/api/google-drive/folder/{folderId}/process`
+                .replace(`{${"folderId"}}`, encodeURIComponent(String(folderId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * GoogleDriveControllerApi - functional programming interface
+ * @export
+ */
+export const GoogleDriveControllerApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = GoogleDriveControllerApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Download a specific Google Drive file and upload it to B2 service
+         * @param {string} fileId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadAndUploadFile(fileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadAndUploadFile(fileId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GoogleDriveControllerApi.downloadAndUploadFile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get image file IDs from a public Google Drive folder
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFolderImages(folderId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFolderImages(folderId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GoogleDriveControllerApi.getFolderImages']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Process folder and upload all images to B2 service
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async processFolderImages(folderId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.processFolderImages(folderId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['GoogleDriveControllerApi.processFolderImages']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * GoogleDriveControllerApi - factory interface
+ * @export
+ */
+export const GoogleDriveControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = GoogleDriveControllerApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Download a specific Google Drive file and upload it to B2 service
+         * @param {string} fileId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadAndUploadFile(fileId: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.downloadAndUploadFile(fileId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get image file IDs from a public Google Drive folder
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFolderImages(folderId: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.getFolderImages(folderId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Process folder and upload all images to B2 service
+         * @param {string} folderId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        processFolderImages(folderId: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.processFolderImages(folderId, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * GoogleDriveControllerApi - object-oriented interface
+ * @export
+ * @class GoogleDriveControllerApi
+ * @extends {BaseAPI}
+ */
+export class GoogleDriveControllerApi extends BaseAPI {
+    /**
+     * 
+     * @summary Download a specific Google Drive file and upload it to B2 service
+     * @param {string} fileId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GoogleDriveControllerApi
+     */
+    public downloadAndUploadFile(fileId: string, options?: RawAxiosRequestConfig) {
+        return GoogleDriveControllerApiFp(this.configuration).downloadAndUploadFile(fileId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get image file IDs from a public Google Drive folder
+     * @param {string} folderId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GoogleDriveControllerApi
+     */
+    public getFolderImages(folderId: string, options?: RawAxiosRequestConfig) {
+        return GoogleDriveControllerApiFp(this.configuration).getFolderImages(folderId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Process folder and upload all images to B2 service
+     * @param {string} folderId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof GoogleDriveControllerApi
+     */
+    public processFolderImages(folderId: string, options?: RawAxiosRequestConfig) {
+        return GoogleDriveControllerApiFp(this.configuration).processFolderImages(folderId, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

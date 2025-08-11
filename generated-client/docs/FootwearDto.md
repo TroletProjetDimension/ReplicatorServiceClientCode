@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **comments** | [**Array&lt;CommentDto&gt;**](CommentDto.md) |  | [optional] [default to undefined]
 **repairs** | [**Array&lt;RepairDto&gt;**](RepairDto.md) |  | [optional] [default to undefined]
 **attributes** | [**AttributesDto**](AttributesDto.md) |  | [optional] [default to undefined]
-**washMethod** | **string** |  | [optional] [default to undefined]
+**washMethodList** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **location** | **string** |  | [optional] [default to undefined]
 **archived** | **boolean** |  | [optional] [default to undefined]
 **backtracked** | **boolean** |  | [optional] [default to undefined]
@@ -39,7 +39,7 @@ const instance: FootwearDto = {
     comments,
     repairs,
     attributes,
-    washMethod,
+    washMethodList,
     location,
     archived,
     backtracked,

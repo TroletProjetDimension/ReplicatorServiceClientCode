@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **condition** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **currentStep** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **sizeVisible** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
-**washMethod** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
+**washMethodList** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **brand** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **model** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
 **category** | **Array&lt;string&gt;** |  | [optional] [default to undefined]
@@ -40,7 +40,7 @@ const instance: FootwearFilterRequestDto = {
     condition,
     currentStep,
     sizeVisible,
-    washMethod,
+    washMethodList,
     brand,
     model,
     category,
