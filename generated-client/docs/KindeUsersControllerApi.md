@@ -4,54 +4,10 @@ All URIs are relative to *https://replicator-service-793462686782.us-central1.ru
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
-|[**debugKindeConfig**](#debugkindeconfig) | **GET** /kinde/debug | |
 |[**deleteUser**](#deleteuser) | **DELETE** /kinde/user/{userId} | Delete Kinde user by ID|
 |[**getAllUsers**](#getallusers) | **GET** /kinde/users | Get all Kinde users|
 |[**getUserById**](#getuserbyid) | **GET** /kinde/user/{userId} | Get Kinde user by ID|
 |[**userExists**](#userexists) | **GET** /kinde/user/{userId}/exists | Check if Kinde user exists by ID|
-
-# **debugKindeConfig**
-> string debugKindeConfig()
-
-
-### Example
-
-```typescript
-import {
-    KindeUsersControllerApi,
-    Configuration
-} from './api';
-
-const configuration = new Configuration();
-const apiInstance = new KindeUsersControllerApi(configuration);
-
-const { status, data } = await apiInstance.debugKindeConfig();
-```
-
-### Parameters
-This endpoint does not have any parameters.
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[BearerAuth](../README.md#BearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/hal+json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-|**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **deleteUser**
 > SuccessResponse deleteUser()
