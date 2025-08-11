@@ -2921,6 +2921,39 @@ export const KindeUsersControllerApiAxiosParamCreator = function (configuration?
     return {
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        debugKindeConfig: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/kinde/debug`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Delete Kinde user by ID
          * @param {string} userId 
          * @param {*} [options] Override http request option.
@@ -3079,6 +3112,17 @@ export const KindeUsersControllerApiFp = function(configuration?: Configuration)
     return {
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async debugKindeConfig(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.debugKindeConfig(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['KindeUsersControllerApi.debugKindeConfig']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Delete Kinde user by ID
          * @param {string} userId 
          * @param {*} [options] Override http request option.
@@ -3140,6 +3184,14 @@ export const KindeUsersControllerApiFactory = function (configuration?: Configur
     return {
         /**
          * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        debugKindeConfig(options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.debugKindeConfig(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Delete Kinde user by ID
          * @param {string} userId 
          * @param {*} [options] Override http request option.
@@ -3187,6 +3239,16 @@ export const KindeUsersControllerApiFactory = function (configuration?: Configur
  * @extends {BaseAPI}
  */
 export class KindeUsersControllerApi extends BaseAPI {
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof KindeUsersControllerApi
+     */
+    public debugKindeConfig(options?: RawAxiosRequestConfig) {
+        return KindeUsersControllerApiFp(this.configuration).debugKindeConfig(options).then((request) => request(this.axios, this.basePath));
+    }
+
     /**
      * 
      * @summary Delete Kinde user by ID
