@@ -1065,13 +1065,13 @@ export interface SuccessResponse {
 /**
  * 
  * @export
- * @interface UploadFootwearImageRequest
+ * @interface UploadProfilePictureRequest
  */
-export interface UploadFootwearImageRequest {
+export interface UploadProfilePictureRequest {
     /**
      * 
      * @type {File}
-     * @memberof UploadFootwearImageRequest
+     * @memberof UploadProfilePictureRequest
      */
     'file': File;
 }
@@ -1650,6 +1650,563 @@ export class EmployeeControllerApi extends BaseAPI {
 
 
 /**
+ * FileControllerApi - axios parameter creator
+ * @export
+ */
+export const FileControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @summary Delete footwear image from B2 bucket
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFootwearImage: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fileName' is not null or undefined
+            assertParamExists('deleteFootwearImage', 'fileName', fileName)
+            const localVarPath = `/file/footwear/{fileName}`
+                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePhotoFromDatabase: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fileName' is not null or undefined
+            assertParamExists('deletePhotoFromDatabase', 'fileName', fileName)
+            const localVarPath = `/file/footwear/{fileName}/database`
+                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Delete profile picture for employee
+         * @param {string} employeeId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProfilePicture: async (employeeId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'employeeId' is not null or undefined
+            assertParamExists('deleteProfilePicture', 'employeeId', employeeId)
+            const localVarPath = `/file/profile/{employeeId}`
+                .replace(`{${"employeeId"}}`, encodeURIComponent(String(employeeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get file (serve actual image for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFile: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fileName' is not null or undefined
+            assertParamExists('getFile', 'fileName', fileName)
+            const localVarPath = `/file/{fileName}`
+                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Get file info (works for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFileInfo: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'fileName' is not null or undefined
+            assertParamExists('getFileInfo', 'fileName', fileName)
+            const localVarPath = `/file/{fileName}/info`
+                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Upload footwear image
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadFootwearImage: async (uploadProfilePictureRequest?: UploadProfilePictureRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/file/footwear/upload`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(uploadProfilePictureRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @summary Upload profile picture for employee
+         * @param {string} employeeId 
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadProfilePicture: async (employeeId: string, uploadProfilePictureRequest?: UploadProfilePictureRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'employeeId' is not null or undefined
+            assertParamExists('uploadProfilePicture', 'employeeId', employeeId)
+            const localVarPath = `/file/profile/{employeeId}/upload`
+                .replace(`{${"employeeId"}}`, encodeURIComponent(String(employeeId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication BearerAuth required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(uploadProfilePictureRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * FileControllerApi - functional programming interface
+ * @export
+ */
+export const FileControllerApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = FileControllerApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete footwear image from B2 bucket
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFootwearImage(fileName, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.deleteFootwearImage']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePhotoFromDatabase(fileName, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.deletePhotoFromDatabase']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Delete profile picture for employee
+         * @param {string} employeeId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteProfilePicture(employeeId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteProfilePicture(employeeId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.deleteProfilePicture']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get file (serve actual image for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFile(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFile(fileName, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.getFile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Get file info (works for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getFileInfo(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getFileInfo(fileName, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.getFileInfo']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Upload footwear image
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async uploadFootwearImage(uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFootwearImage(uploadProfilePictureRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.uploadFootwearImage']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @summary Upload profile picture for employee
+         * @param {string} employeeId 
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async uploadProfilePicture(employeeId: string, uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadProfilePicture(employeeId, uploadProfilePictureRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['FileControllerApi.uploadProfilePicture']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * FileControllerApi - factory interface
+ * @export
+ */
+export const FileControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = FileControllerApiFp(configuration)
+    return {
+        /**
+         * 
+         * @summary Delete footwear image from B2 bucket
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.deleteFootwearImage(fileName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.deletePhotoFromDatabase(fileName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Delete profile picture for employee
+         * @param {string} employeeId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteProfilePicture(employeeId: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.deleteProfilePicture(employeeId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get file (serve actual image for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFile(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<File> {
+            return localVarFp.getFile(fileName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Get file info (works for both footwear and profile pictures)
+         * @param {string} fileName 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getFileInfo(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.getFileInfo(fileName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Upload footwear image
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadFootwearImage(uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.uploadFootwearImage(uploadProfilePictureRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Upload profile picture for employee
+         * @param {string} employeeId 
+         * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadProfilePicture(employeeId: string, uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
+            return localVarFp.uploadProfilePicture(employeeId, uploadProfilePictureRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * FileControllerApi - object-oriented interface
+ * @export
+ * @class FileControllerApi
+ * @extends {BaseAPI}
+ */
+export class FileControllerApi extends BaseAPI {
+    /**
+     * 
+     * @summary Delete footwear image from B2 bucket
+     * @param {string} fileName 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).deleteFootwearImage(fileName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
+     * @param {string} fileName 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).deletePhotoFromDatabase(fileName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Delete profile picture for employee
+     * @param {string} employeeId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public deleteProfilePicture(employeeId: string, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).deleteProfilePicture(employeeId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get file (serve actual image for both footwear and profile pictures)
+     * @param {string} fileName 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public getFile(fileName: string, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).getFile(fileName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get file info (works for both footwear and profile pictures)
+     * @param {string} fileName 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public getFileInfo(fileName: string, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).getFileInfo(fileName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Upload footwear image
+     * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public uploadFootwearImage(uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).uploadFootwearImage(uploadProfilePictureRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Upload profile picture for employee
+     * @param {string} employeeId 
+     * @param {UploadProfilePictureRequest} [uploadProfilePictureRequest] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof FileControllerApi
+     */
+    public uploadProfilePicture(employeeId: string, uploadProfilePictureRequest?: UploadProfilePictureRequest, options?: RawAxiosRequestConfig) {
+        return FileControllerApiFp(this.configuration).uploadProfilePicture(employeeId, uploadProfilePictureRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * FootwearControllerApi - axios parameter creator
  * @export
  */
@@ -1707,82 +2264,6 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
             assertParamExists('deleteFootwear', 'id', id)
             const localVarPath = `/footwear/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Delete footwear image in B2 bucket
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteFootwearImage: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'fileName' is not null or undefined
-            assertParamExists('deleteFootwearImage', 'fileName', fileName)
-            const localVarPath = `/footwear/files/{fileName}`
-                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deletePhotoFromDatabase: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'fileName' is not null or undefined
-            assertParamExists('deletePhotoFromDatabase', 'fileName', fileName)
-            const localVarPath = `/footwear/files/{fileName}/database`
-                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -1895,82 +2376,6 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(footwearFilterRequestDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get file (serve actual image)
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFile: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'fileName' is not null or undefined
-            assertParamExists('getFile', 'fileName', fileName)
-            const localVarPath = `/footwear/files/{fileName}`
-                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Get file info
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFileInfo: async (fileName: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'fileName' is not null or undefined
-            assertParamExists('getFileInfo', 'fileName', fileName)
-            const localVarPath = `/footwear/files/{fileName}/info`
-                .replace(`{${"fileName"}}`, encodeURIComponent(String(fileName)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2199,112 +2604,6 @@ export const FootwearControllerApiAxiosParamCreator = function (configuration?: 
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * 
-         * @summary Update footwear files (B2)
-         * @param {string} id 
-         * @param {string} [footwear] 
-         * @param {Array<File>} [virtualAssistantPhotos] 
-         * @param {Array<File>} [repairPhotos] 
-         * @param {Array<File>} [postRepairPhotos] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateFootwearFiles: async (id: string, footwear?: string, virtualAssistantPhotos?: Array<File>, repairPhotos?: Array<File>, postRepairPhotos?: Array<File>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('updateFootwearFiles', 'id', id)
-            const localVarPath = `/footwear/{id}/files`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-            if (footwear !== undefined) { 
-                localVarFormParams.append('footwear', footwear as any);
-            }
-                if (virtualAssistantPhotos) {
-                virtualAssistantPhotos.forEach((element) => {
-                    localVarFormParams.append('virtualAssistantPhotos', element as any);
-                })
-            }
-
-                if (repairPhotos) {
-                repairPhotos.forEach((element) => {
-                    localVarFormParams.append('repairPhotos', element as any);
-                })
-            }
-
-                if (postRepairPhotos) {
-                postRepairPhotos.forEach((element) => {
-                    localVarFormParams.append('postRepairPhotos', element as any);
-                })
-            }
-
-    
-    
-            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = localVarFormParams;
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Upload footwear image
-         * @param {UploadFootwearImageRequest} [uploadFootwearImageRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        uploadFootwearImage: async (uploadFootwearImageRequest?: UploadFootwearImageRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/footwear/files`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication BearerAuth required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(uploadFootwearImageRequest, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -2343,32 +2642,6 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Delete footwear image in B2 bucket
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteFootwearImage(fileName, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.deleteFootwearImage']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePhotoFromDatabase(fileName, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.deletePhotoFromDatabase']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
          * @summary Get all footwears with file URLs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2394,32 +2667,6 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getAllFootwearsFilteredPaginated']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Get file (serve actual image)
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFile(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFile(fileName, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getFile']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Get file info
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getFileInfo(fileName: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getFileInfo(fileName, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.getFileInfo']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -2498,36 +2745,6 @@ export const FootwearControllerApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.updateFootwearData']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
-        /**
-         * 
-         * @summary Update footwear files (B2)
-         * @param {string} id 
-         * @param {string} [footwear] 
-         * @param {Array<File>} [virtualAssistantPhotos] 
-         * @param {Array<File>} [repairPhotos] 
-         * @param {Array<File>} [postRepairPhotos] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async updateFootwearFiles(id: string, footwear?: string, virtualAssistantPhotos?: Array<File>, repairPhotos?: Array<File>, postRepairPhotos?: Array<File>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateFootwearFiles(id, footwear, virtualAssistantPhotos, repairPhotos, postRepairPhotos, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.updateFootwearFiles']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 
-         * @summary Upload footwear image
-         * @param {UploadFootwearImageRequest} [uploadFootwearImageRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async uploadFootwearImage(uploadFootwearImageRequest?: UploadFootwearImageRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<string>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFootwearImage(uploadFootwearImageRequest, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['FootwearControllerApi.uploadFootwearImage']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
     }
 };
 
@@ -2560,26 +2777,6 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Delete footwear image in B2 bucket
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.deleteFootwearImage(fileName, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.deletePhotoFromDatabase(fileName, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
          * @summary Get all footwears with file URLs
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2600,26 +2797,6 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
          */
         getAllFootwearsFilteredPaginated(size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedResponseDto> {
             return localVarFp.getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get file (serve actual image)
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFile(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<File> {
-            return localVarFp.getFile(fileName, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Get file info
-         * @param {string} fileName 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getFileInfo(fileName: string, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.getFileInfo(fileName, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2679,30 +2856,6 @@ export const FootwearControllerApiFactory = function (configuration?: Configurat
         updateFootwearData(id: string, footwearDto: FootwearDto, options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.updateFootwearData(id, footwearDto, options).then((request) => request(axios, basePath));
         },
-        /**
-         * 
-         * @summary Update footwear files (B2)
-         * @param {string} id 
-         * @param {string} [footwear] 
-         * @param {Array<File>} [virtualAssistantPhotos] 
-         * @param {Array<File>} [repairPhotos] 
-         * @param {Array<File>} [postRepairPhotos] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        updateFootwearFiles(id: string, footwear?: string, virtualAssistantPhotos?: Array<File>, repairPhotos?: Array<File>, postRepairPhotos?: Array<File>, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.updateFootwearFiles(id, footwear, virtualAssistantPhotos, repairPhotos, postRepairPhotos, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 
-         * @summary Upload footwear image
-         * @param {UploadFootwearImageRequest} [uploadFootwearImageRequest] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        uploadFootwearImage(uploadFootwearImageRequest?: UploadFootwearImageRequest, options?: RawAxiosRequestConfig): AxiosPromise<string> {
-            return localVarFp.uploadFootwearImage(uploadFootwearImageRequest, options).then((request) => request(axios, basePath));
-        },
     };
 };
 
@@ -2739,30 +2892,6 @@ export class FootwearControllerApi extends BaseAPI {
 
     /**
      * 
-     * @summary Delete footwear image in B2 bucket
-     * @param {string} fileName 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public deleteFootwearImage(fileName: string, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).deleteFootwearImage(fileName, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Delete a specific photo from footwear photo group by filename in DynamoDB
-     * @param {string} fileName 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public deletePhotoFromDatabase(fileName: string, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).deletePhotoFromDatabase(fileName, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
      * @summary Get all footwears with file URLs
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2786,30 +2915,6 @@ export class FootwearControllerApi extends BaseAPI {
      */
     public getAllFootwearsFilteredPaginated(size?: number, sortBy?: string, sortDir?: string, nextPageToken?: string, footwearFilterRequestDto?: FootwearFilterRequestDto, options?: RawAxiosRequestConfig) {
         return FootwearControllerApiFp(this.configuration).getAllFootwearsFilteredPaginated(size, sortBy, sortDir, nextPageToken, footwearFilterRequestDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get file (serve actual image)
-     * @param {string} fileName 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public getFile(fileName: string, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).getFile(fileName, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Get file info
-     * @param {string} fileName 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public getFileInfo(fileName: string, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).getFileInfo(fileName, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2880,34 +2985,6 @@ export class FootwearControllerApi extends BaseAPI {
      */
     public updateFootwearData(id: string, footwearDto: FootwearDto, options?: RawAxiosRequestConfig) {
         return FootwearControllerApiFp(this.configuration).updateFootwearData(id, footwearDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Update footwear files (B2)
-     * @param {string} id 
-     * @param {string} [footwear] 
-     * @param {Array<File>} [virtualAssistantPhotos] 
-     * @param {Array<File>} [repairPhotos] 
-     * @param {Array<File>} [postRepairPhotos] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public updateFootwearFiles(id: string, footwear?: string, virtualAssistantPhotos?: Array<File>, repairPhotos?: Array<File>, postRepairPhotos?: Array<File>, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).updateFootwearFiles(id, footwear, virtualAssistantPhotos, repairPhotos, postRepairPhotos, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 
-     * @summary Upload footwear image
-     * @param {UploadFootwearImageRequest} [uploadFootwearImageRequest] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof FootwearControllerApi
-     */
-    public uploadFootwearImage(uploadFootwearImageRequest?: UploadFootwearImageRequest, options?: RawAxiosRequestConfig) {
-        return FootwearControllerApiFp(this.configuration).uploadFootwearImage(uploadFootwearImageRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
